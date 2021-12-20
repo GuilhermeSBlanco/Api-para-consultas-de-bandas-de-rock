@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert band</title>
+</head>
+<body>
+    <form method="POST" th:action="@{/api}" th:object="${band}">
+        <label>Name: </label>
+        <input type="text" />
+        <select th:field="*{Genre}" >
+            <option th:each="Genre : ${T(br.com.arthurschultz.bands.model.Genre).values()}" 
+                    th:value="${Genre}" 
+                    th:text="${Genre}">
+            </option>
+        </select>
+        <button type="submit">Cadastrar</button>
+    </form>
+</body>
+</html>

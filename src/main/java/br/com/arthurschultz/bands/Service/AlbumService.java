@@ -2,7 +2,7 @@ package br.com.arthurschultz.bands.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import br.com.arthurschultz.bands.model.Albuns;
+import br.com.arthurschultz.bands.model.Album;
 import br.com.arthurschultz.bands.Repository.AlbumRepository;
 import java.util.List;
 import java.util.Optional;
@@ -12,24 +12,28 @@ public class AlbumService {
     @Autowired
     private AlbumRepository albumRepo;
 
-    public Albuns insertOrUpdate(Albuns album) {
+    public Album insertOrUpdate(Album album) {
         return albumRepo.save(album);
     }
 
-    public List<Albuns> findAll() {
+    public List<Album> findAll() {
         return albumRepo.findAll();
     }
 
-    public Optional<Albuns> findById(int id) {
-        return albumRepo.findById(id);
-    }
-
-    public Albuns findByName(String name) {
-        var album = albumRepo.findByNameContains(name);
+    public Album findByName(String name) {
+        var album = albumRepo.findByName(name.replace('-', ' '));
         if (album.isPresent()) {
             return album.get();
         }
-        return new Albuns();
+        return new Album();
+    }
+
+    public List<Object> findAlbuns(String name) {
+        return albumRepo.findAlbuns(name.replace('-', ' '));
+    }
+
+    public Optional<Album> findById(int id) {
+        return albumRepo.findById(id);
     }
 
     public boolean Delete(int id) {

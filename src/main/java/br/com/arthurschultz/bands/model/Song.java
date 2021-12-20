@@ -7,22 +7,25 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Band {
+public class Song {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int Id;
     @Column(columnDefinition = "varchar(80) not null")
     private String Name;
-    @Column(nullable = false)
-    private Genre Genre;
+    @Column(columnDefinition = "varchar(80) not null")
+    private String Album;
+    @Column(columnDefinition = "varchar(80) not null")
+    private String Band;
 
-    public Band() {
+    public Song() {
     }
 
-    public Band(int Id, String Name, Genre Genre) {
+    public Song(int Id, String Name, String Album, String Band) {
         this.Id = Id;
         this.Name = Name;
-        this.Genre = Genre;
+        this.Album = Album;
+        this.Band = Band;
     }
 
     public int getId() {
@@ -41,11 +44,20 @@ public class Band {
         this.Name = Name;
     }
 
-    public Genre getGenre() {
-        return this.Genre;
+    public String getAlbum() {
+        return this.Album;
     }
 
-    public void setGenre(Genre Genre) {
-        this.Genre = Genre;
+    public void setAlbum(String Album) {
+        this.Album = Album;
     }
+
+    public String getBand() {
+        return this.Band;
+    }
+
+    public void setBand(String Band) {
+        this.Band = Band;
+    }
+
 }

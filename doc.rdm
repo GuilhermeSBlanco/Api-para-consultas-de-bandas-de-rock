@@ -1,0 +1,7 @@
+Documentação da api: 
+
+ /api/bands - Retorna todas as bandas
+ /api/bands/nomedabanda - Retorna todos os albuns dessa banda
+ /api/bands/nomedabanda/nomedoalbum - Retorna as músicas do álbum
+
+ Qualquer tentativa de inserção/deleção/atualização ira retornar um BAD_REQUEST (Error 400 - Bad Request)
